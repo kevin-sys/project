@@ -18,7 +18,7 @@ Seccion para editar empleados
 <br>
 <label for="Foto">{{'Foto'}}</label>
 <br>
-{{ $jefedepartamento->Foto }}
+<img src="{{ asset('storage').'/'.$jefedepartamento->Foto}}" alt="" width="200">
 <br>
 <input type="file" name="Foto" id="Foto" value="">
 <br>

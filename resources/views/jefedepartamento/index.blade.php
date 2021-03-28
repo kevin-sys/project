@@ -16,7 +16,9 @@ Inicio (Despligue de datos)
         @foreach ($jefedepartamento as $jefe)
         <tr>
             <td>{{$loop->iteration}}</td>
-            <td>{{$jefe->Foto}}</td>
+            <td>
+               <img src="{{ asset('storage').'/'.$jefe->Foto}}" alt="" width="200">
+            </td>
             <td>{{$jefe->Id}}</td>
             <td>{{$jefe->PrimerNombre}}</td>
             <td>{{$jefe->SegundoNombre}}</td>
