@@ -24,4 +24,6 @@ Seccion para editar empleados
 <br>
 <br>
 <input type="submit" value="Modificar">
+<br>
+<a href="{{ url('jefedepartamento') }}"><b>Volver a consultar jefes</b></a>
 </form>

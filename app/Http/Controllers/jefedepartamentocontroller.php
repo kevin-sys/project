@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\jefedepartamento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class jefedepartamentoController extends Controller
 {
@@ -44,7 +45,8 @@ class jefedepartamentoController extends Controller
             $DatosJefeDepartamento['Foto']=$request->file('Foto')->store('uploads', 'public');
         }
         jefedepartamento::insert($DatosJefeDepartamento);
-        return response()->json($DatosJefeDepartamento);
+       // return response()->json($DatosJefeDepartamento);
+        return redirect('jefedepartamento/create')->with('Mensaje', 'Jefe de departamento guardado con exito!'); 
     }
 
     /**
@@ -69,7 +71,7 @@ class jefedepartamentoController extends Controller
         //
         $jefedepartamento=jefedepartamento::findOrFail($Id);
         return view('jefedepartamento.edit', compact('jefedepartamento'));
-
+        
     }
 
     /**
@@ -83,9 +85,20 @@ class jefedepartamentoController extends Controller
     {
         //
         $DatosJefeDepartamento=request()->except(['_token', '_method']);
+
+        if($request->hasFile('Foto')){
+            $jefedepartamento=jefedepartamento::findOrFail($Id);
+            
+            Storage::delete('public/'.$jefedepartamento->Foto);
+            
+            $DatosJefeDepartamento['Foto']=$request->file('Foto')->store('uploads', 'public');
+        }
+
        jefedepartamento::where('Id', '=',$Id)->update($DatosJefeDepartamento);
-       $jefedepartamento=jefedepartamento::findOrFail($Id);
-       return view('jefedepartamento.edit', compact('jefedepartamento'));
+
+       //$jefedepartamento=jefedepartamento::findOrFail($Id);
+       //return view('jefedepartamento.edit', compact('jefedepartamento'));
+       return redirect('jefedepartamento')->with('Mensaje', 'Jefe de departamento modificado con exito!'); 
     }
 
     /**
@@ -97,7 +110,11 @@ class jefedepartamentoController extends Controller
     public function destroy($Id)
     {
         //
-        jefedepartamento::destroy($Id);
-        return redirect('jefedepartamento');        
+        $jefedepartamento=jefedepartamento::findOrFail($Id);
+        if(Storage::delete('public/'.$jefedepartamento->Foto)){
+            jefedepartamento::destroy($Id);
+        }
+        //return redirect('jefedepartamento');    
+        return redirect('jefedepartamento')->with('Mensaje', 'Jefe de departamento eliminado con exito!');     
     }
 }

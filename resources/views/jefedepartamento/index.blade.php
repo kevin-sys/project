@@ -1,4 +1,15 @@
-Inicio (Despligue de datos)
+<h2><b>Listado de jefes de departamento</b></h2>
+
+@if (Session::has('Mensaje')){{
+    Session::get('Mensaje')
+}}
+@endif
+
+<br>
+
+<a href="{{ url('jefedepartamento/create') }}"><b>Agregar Jefe de departamento</b></a>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/litera/bootstrap.min.css" integrity="sha384-enpDwFISL6M3ZGZ50Tjo8m65q06uLVnyvkFO3rsoW0UC15ATBFz3QEhr3hmxpYsn" crossorigin="anonymous">
 <table class="table table-light">
     <thead class="thead-light">
         <tr>
@@ -28,11 +39,10 @@ Inicio (Despligue de datos)
                 <a href="{{ url('/jefedepartamento/'.$jefe->Id.'/edit') }}">
                     Editar
                 </a>
-
-                <form action="{{ url('/jefedepartamento', ['jefe' => $jefe->Id]) }}" method="post">
+                <form method="POST" action="{{ url('/jefedepartamento/'.$jefe->Id)}}">
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }} 
-              <button type="submit" onclick="return confirm('¿Borrar?');">Eliminar</button>
+              <button type="submit" class="btn btn-danger btn-block" onclick="return confirm('¿Borrar?');">Eliminar</button>
               </form>
             </td>
         </tr>

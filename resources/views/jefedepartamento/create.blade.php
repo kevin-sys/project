@@ -1,4 +1,7 @@
-Seccion para crear jefes de departamentos
+@if (Session::has('Mensaje')){{
+    Session::get('Mensaje')
+}}
+@endif
 <form action="{{ url('/jefedepartamento')}}" method="post" enctype="multipart/form-data">
 {{ csrf_field() }}
 <br>
@@ -21,4 +24,7 @@ Seccion para crear jefes de departamentos
 <input type="file" name="Foto" id="Foto" value="">
 <br>
 <input type="submit" value="Agregar">
+<br>
+<a href="{{ url('jefedepartamento') }}"><b>Volver a consultar jefes</b></a>
+
 </form>
