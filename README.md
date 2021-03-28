@@ -8,4 +8,4 @@
 </p>
 
 Aplicacion realizada con framework LARAVEL
-KGC Todos los derechos reservados ®
+##KGC Todos los derechos reservados ®##
