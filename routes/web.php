@@ -22,3 +22,7 @@ Route::get('/', function () {
 //Route::get('/jefedepartamento/edit', 'jefedepartamentocontroller@edit');
 
 Route::resource('/jefedepartamento', 'jefedepartamentocontroller');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

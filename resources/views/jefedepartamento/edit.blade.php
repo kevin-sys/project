@@ -1,8 +1,11 @@
 Seccion para editar empleados
 <form action="{{ url('/jefedepartamento/' . $jefedepartamento->Id)}}" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}
-   {{ method_field('PATCH') }}
+    {{ method_field('PATCH') }}
 
+<label for="Identificacion">{{'Identificacion: '}}</label>
+<label for="Identificacion">{{ $jefedepartamento->Id }}</label>
+<br>
 <label for="PrimerNombre">{{'PrimerNombre'}}</label>
 <input type="text" name="PrimerNombre" id="PrimerNombre" value="{{ $jefedepartamento->PrimerNombre }}">
 <br>
