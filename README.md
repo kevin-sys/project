@@ -7,4 +7,5 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-Aplicacion realizada con framework LARAVEL, KGC Todos los derechos reservados ®
+Aplicacion realizada con framework LARAVEL
+KGC Todos los derechos reservados ®
