@@ -8,4 +8,5 @@
 </p>
 
 Aplicacion realizada con framework LARAVEL
-##KGC Todos los derechos reservados ®##
+<br>
+<a href="https://www.instagram.com/kevingomezk19/">Sigueme en instagram</a>
