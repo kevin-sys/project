@@ -9,4 +9,5 @@
 
 Aplicacion realizada con framework LARAVEL
 <br>
+<label><b>Sigueme en instagram</b></label>
 <a href="https://www.instagram.com/kevingomezk19/"><img src="https://play-lh.googleusercontent.com/h9jWMwqb-h9hjP4THqrJ50eIwPekjv7QPmTpA85gFQ10PjV02CoGAcYLLptqd19Sa1iJ" alt="Build Status" height=50></a>
