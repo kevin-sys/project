@@ -1,4 +1,6 @@
-Seccion para editar empleados
+@extends('layouts.app')
+@section('content')
+<div class="container">
 <form action="{{ url('/jefedepartamento/' . $jefedepartamento->Id)}}" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}
     {{ method_field('PATCH') }}
@@ -30,3 +32,5 @@ Seccion para editar empleados
 <br>
 <a href="{{ url('jefedepartamento') }}"><b>Volver a consultar jefes</b></a>
 </form>
+</div>
+@endsection

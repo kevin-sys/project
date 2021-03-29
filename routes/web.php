@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 //Route::get('/jefedepartamento', 'jefedepartamentocontroller@index');
@@ -23,6 +23,7 @@ Route::get('/', function () {
 
 Route::resource('/jefedepartamento', 'jefedepartamentocontroller');
 
-Auth::routes();
+//la linea inferior sirve para desactivar las views.
+Auth::routes(['register'=>false, 'reset'=>false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

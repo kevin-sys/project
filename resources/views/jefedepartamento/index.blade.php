@@ -1,4 +1,7 @@
-<h2><b>Listado de jefes de departamento</b></h2>
+@extends('layouts.app')
+@section('content')
+<div class="container">
+<h2><b>Jefes de departamento</b></h2>
 
 @if (Session::has('Mensaje')){{
     Session::get('Mensaje')
@@ -7,18 +10,19 @@
 
 <br>
 
-<a href="{{ url('jefedepartamento/create') }}"><b>Agregar Jefe de departamento</b></a>
+<a href="{{ url('jefedepartamento/create') }}"class="btn btn-success"><b>Agregar Jefe de departamento</b></a>
+<br>
+<br>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/litera/bootstrap.min.css" integrity="sha384-enpDwFISL6M3ZGZ50Tjo8m65q06uLVnyvkFO3rsoW0UC15ATBFz3QEhr3hmxpYsn" crossorigin="anonymous">
-<table class="table table-light">
+<table class="table table-light table-hover">
     <thead class="thead-light">
         <tr>
             <th>Número</th>
             <th>Foto</th>
-            <th>Id</th>
+            <th>Identificación</th>
             <th>Primer Nombre</th>
             <th>Segundo Nombre</th>
-            <th>Primer Apellidoz</th>
+            <th>Primer Apellido</th>
             <th>Segundo Apellido</th>
             <th>Accion</th>
         </tr>
@@ -28,7 +32,7 @@
         <tr>
             <td>{{$loop->iteration}}</td>
             <td>
-               <img src="{{ asset('storage').'/'.$jefe->Foto}}" alt="" width="200">
+               <img src="{{ asset('storage').'/'.$jefe->Foto}}" class="img-thumbnail img-fluid" alt="" width="50" height="50">
             </td>
             <td>{{$jefe->Id}}</td>
             <td>{{$jefe->PrimerNombre}}</td>
@@ -36,13 +40,13 @@
             <td>{{$jefe->PrimerApellido}}</td>
             <td>{{$jefe->SegundoApellido}}</td>
             <td>
-                <a href="{{ url('/jefedepartamento/'.$jefe->Id.'/edit') }}">
-                    Editar
+                <a class="btn btn-warning" href="{{ url('/jefedepartamento/'.$jefe->Id.'/edit') }}">
+                    <b>Editar</b>
                 </a>
-                <form method="POST" action="{{ url('/jefedepartamento/'.$jefe->Id)}}">
+                <form method="POST" action="{{ url('/jefedepartamento/'.$jefe->Id) }}" style="display:inline">
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }} 
-              <button type="submit" class="btn btn-danger btn-block" onclick="return confirm('¿Borrar?');">Eliminar</button>
+              <button type="submit" class="btn btn-danger" onclick="return confirm('¿Borrar?');"><b>Eliminar</b></button>
               </form>
             </td>
         </tr>
@@ -50,4 +54,5 @@
         
     </tbody>
 </table>
-
+</div>
+@endsection
